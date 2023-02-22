@@ -4,31 +4,118 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homeownership Across Race</title>
+  <title>Neighborhood</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/homeownership/assets/index-f9857d5e.js"></script>
-  <link rel="stylesheet" href="/homeownership/assets/index-8cf361b9.css">
+  <script type="module" crossorigin src="/homeownership/assets/index-78bba16a.js"></script>
+  <link rel="stylesheet" href="/homeownership/assets/index-2abe6363.css">
 </head>
 <body>
+
   <canvas class="webgl"></canvas>
-  
-  <div id="titleContainer">
-    <div>
-      <h1 id="title">Homeownership Across Race</h1>
-      <h2 id="subtitle">This visualization imagines differential rates of homeownership as a neighborhood.<br>Explore how the size of each house changes over time to reflect the rates of homeownership by race.<br></h2>
+
+
+    
+
+  <div class="container">
+    <div id="titleContainer">
+      
+        <h1 id="title">Homeownership Across Race</h1>
+        <h2 id="subtitle">This visualization imagines differential rates of homeownership as a neighborhood.<br>Explore how the size of each house changes over time to reflect the rates of homeownership by race.<br></h2>
+
     </div>
+    
+    <div class="canvasLegend">
+
+      <div class="canvasSpace">
+      </div>
+
+      <div class="legend">
+        <p class="statline" id="statHead">1994 Homeownership Rates:</p>
+        <div class="legend-row">
+          <div class="legend-circle" style="background-color: #0a3354;"></div>
+          <p class='statline' id="blueWhite">White Americans: 10%</p>
+        </div>
+        <div class="legend-row">
+          <div class="legend-circle" style="background-color: #edbac2;"></div>
+          <p class='statline' id="pinkHispanic">Hispanic Americans: 10%</p>
+        </div>
+        <div class="legend-row">
+          <div class="legend-circle" style="background-color: #67482a;"></div>
+          <p class='statline' id="brownBlack">Black Americans: 10%</p>
+        </div>
+        <div class="legend-row">
+          <div class="legend-circle" style="background-color: #b98d33;"></div>
+          <p class='statline' id="goldNative">Native Americans: 10%</p>
+        </div>
+        <div class="legend-row">
+          <div class="legend-circle" style="background-color: #9b3027;"></div>
+          <p class='statline' id="redAsian">Asian Americans: 10%</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="controlsStats">
+        <div class="sliderGUI">
+
+          <div class="yearContainer">
+            <div id="valueLabel">1994</div>
+          </div>
+          <div class="sliderFuncContainer">
+            <div id="sliderSubtitle">Move the slider to see how the data changes over time.</div>
+            <input id="yearSlider" type="range" min="1994" max="2021" value="1994" class="slider">
+          </div>
+          
+        </div>
+
+      <div class="buttonsContainer">
+        <div class="buttons">
+        <div class="row">
+          <div class="col">
+            <button id="birdsEye" class="button">Bird's Eye</button>
+          </div>
+          <div class="col">
+            <button id="autoRotate" class="button toggle">Auto Rotate</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button id="resetPosition" class="button">Reset Position</button>
+          </div>
+          <div class="col">
+            <button id="resetRotate" class="button">Reset Rotation</button>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p id="footer">Data on homeownership by race comes from the U.S. Census Bureau.</p>
+    </div> 
+
   </div>
-  
-  <div id="GUI">
+</body>
+</html>
+
+<!--
+
+<div id="GUI">
+
     <div id="sliderContainer" style="float: left;">
+
       <div id="valueLabel"></div>
       <input id="yearSlider" type="range" min="1994" max="2021" value="1994" class="slider">
       <div id="sliderSubtitle">Move the slider to see how the data changes over time.</div>
+
     </div>
+
     <div class="buttonContainer" style="float: right;">
+
       <div class="row">
         <div class="col">
           <button id="birdsEye" class="button">Bird's Eye</button>
@@ -45,16 +132,20 @@
           <button id="resetRotate" class="button">Reset Rotation</button>
         </div>
       </div>
+
     </div>
   </div>
   <div id="statLegend">
+
     <div class="stats" style="float: left;">
+      <p class="statline" id="statHead">Rates of Homeownership in 1994:</p>
       <p class='statline' id="blueWhite">In 1994, 10% of White Americans were homeowners.</p>
       <p class='statline' id="pinkHispanic">In 1994, 10% of Hispanic Americans were homeowners.</p>
       <p class='statline' id="brownBlack">In 1994, 10% of African Americans were homeowners.</p>
       <p class='statline' id="goldNative">In 1994, 10% of Native Americans were homeowners.</p>
       <p class='statline' id="redAsian">In 1994, 10% of Asian Americans were homeowners.</p>
     </div> 
+
     <div class="legend" style="float: right">
       <div class="legend-row">
         <div class="legend-circle" style="background-color: #0a3354;"></div>
@@ -76,11 +167,8 @@
         <div class="legend-circle" style="background-color: #9b3027;"></div>
         <div class="legend-text">Asian Americans</div>
       </div>
+
     </div>
   </div>
-  <div class="footer">
-    <p id="footer">Data on homeownership by race comes from the U.S. Census Bureau.</p>
-  </div> 
 
-</body>
-</html>
+-->
