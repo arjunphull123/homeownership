@@ -1,268 +1,280 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@font-face {
+  font-family: 'VTC Du Bois Trial';
+  src: url('/VTCDuBoisTrial-Regular.woff2') format('woff2'),
+       url('/VTCDuBoisTrial-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
-body, html {
-  overflow-x: hidden;
-  font-family: 'Inter', sans-serif;
-  background-color: black;
-  z-index: 1;
-  text-shadow: 2px 4px 30px black;
+@font-face {
+  font-family: 'VTC Du Bois Trial';
+  src: url('/VTCDuBoisTrial-Bold.woff2') format('woff2'),
+       url('/VTCDuBoisTrial-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
 }
 
 .webgl {
-  position: absolute;
-  top: -3%;
-  left: -12.5%;
-  z-index: 0;
+  position: relative;
+  top: 0%;
+  left: 0;
+  z-index: -1;
+  pointer-events: all;
 }
 
-.container {
-  display: inline;
+body {
+  display: flex;
+  padding: 1.5625rem 0rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  background: #FFE8DA;
+  overflow: hidden;
 }
 
-#titleContainer {
+.body-container {
+  display: flex;
+  width: 75rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+}
+
+h1.title {
+  align-self: stretch;
+  color: #654321;
   text-align: center;
-  color: white;
-  width: 100%;
-  padding: 20px;
-}
-
-#title, .title {
-  font-size: 28px;
+  font-family: VTC Du Bois Trial;
+  font-size: 3.75rem;
+  font-style: normal;
   font-weight: 700;
-  color: white;
-  margin-bottom: 0px;
-  margin-top: 10px;
+  line-height: normal;
 }
 
-
-#subtitle, .subtitle {
-  display: inline-block;
+p.subtitle {
+  height: 3.9375rem;
+  flex: 1 0 0;
+  color: #654321;
   text-align: center;
-  color: white;
-  margin-top: 5px;
-  margin-bottom: 0px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 130%;
+  font-family: Public Sans;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.29375rem */
 }
 
-.canvasLegend {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60vh;
-}
-
-.canvasSpace {
-  width: 45%;
-}
-
-.legend {
-  width: 25%;
-  color: white;
-  padding: 2%;
-}
-
-.controlsStats {
-  display: flex;
-  justify-content: center;
-  height: 12.5vh;
-}
-
-.sliderGUI {
+.content {
   display: flex;
   align-items: center;
+  align-self: stretch;
+}
+
+.stats {
+  display: flex;
+  padding-right: 3.75rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 25rem;
+}
+
+.stat-header, .stat-line {
+  color: #654321;
+  text-align: center;
+  font-family: "Public Sans";
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 1.725rem */
+  margin-bottom: 0;
+}
+
+.race-stat {
+  display: flex;
+  flex-direction: row;
+  padding: 0rem 1rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 6.25rem;
+  border: 3px solid #654321;
+}
+
+.white-icon {
+  background: #0a3354;
+}
+
+.hispanic-icon {
+  background: #edbac2;
+}
+
+.black-icon {
+  background: #67482a;
+}
+
+.native-icon {
+  background: #b98d33;
+}
+
+.asian-icon {
+  background: #9b3027;
+}
+
+.canvas-placeholder {
+  height: 32rem;
+  width: 10rem;
+  flex: 1 0 0;
+}
+
+.menu-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.year {
+  color: #654321;
+  text-align: center;
+  font-family: "VTC Du Bois Trial";
+  font-size: 7.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  min-width: 18rem;
+}
+
+.slider-container {
+  display: flex;
+  padding: 0rem 2.25rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1 0 0;
+}
+
+.slider-text {
+  margin: 0;
+  align-self: stretch;
+  color: #654321;
+  font-family: "Public Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 1.29375rem */
+}
+
+input {
+  margin: 0;
+  --c: #654321; /* active color */
+  --l: 0.5rem; /* line thickness*/
+  --h: 1.5rem; /* thumb height */
+  --w: 1.5rem; /* thumb width */
   
-  width: 40%;
-  justify-content: center;
-  z-index: 1000;
+  align-self: stretch;
+  height: var(--h); /* needed for Firefox*/
+  --_c: color-mix(in srgb, var(--c), #000 var(--p,0%));
+  -webkit-appearance :none;
+  -moz-appearance :none;
+  appearance :none;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+input:focus-visible,
+input:hover{
+  --p: 25%;
 }
 
-.yearContainer {
-  width: 40%;
-}
-
-.sliderFuncContainer {
-  width: 60%;
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 92%;
-  height: 12px;
-  background: #ddd;
-  border-radius: 10px;
-  -webkit-transition: .1s;
-  transition: opacity .1s;
-}
-
-.slider::-webkit-slider-thumb {
+/* chromium */
+input[type="range" i]::-webkit-slider-thumb{
+  height: var(--h);
+  width: var(--w);
+  background: var(--_c);
+  border-image: linear-gradient(90deg,var(--_c) 50%,#654321 0) 0 1/calc(50% - var(--l)/2) 100vw/0 100vw;
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: white;
+  transition: .3s;
+}
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: var(--h);
+  width: var(--w);
+  background: var(--_c);
+  border-image: linear-gradient(90deg,var(--_c) 50%,#ababab 0) 0 1/calc(50% - var(--l)/2) 100vw/0 100vw;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: .3s;
+}
+@supports not (color: color-mix(in srgb,red,red)) {
+  input {
+    --_c: var(--c);
+  }
+}
+
+.menu {
+  display: flex;
+  width: 26.4375rem;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  gap: 0.3125rem;
+  flex-wrap: wrap;
+}
+
+.menu-button {
+  display: flex;
+  width: 13rem;
+  padding: 0.3125rem 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  border: 3px solid #654321;
+  color: #654321;
+  font-family: "VTC Du Bois Trial";
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   cursor: pointer;
 }
 
-#valueLabel {
-  display: inline-block;
-  text-align: left;
-  color: white;
-  font-size: 85px;
-  font-weight: 700;
-  transition: all 0.5s ease;
+.menu-button.active, .menu-button:hover {
+  background: #654321;
+  color: #FFE8DA;
 }
 
-#valueLabel.scaleUp {
-  transform: scale(1.02);
-}
-
-#sliderSubtitle {
-  display: inline-block;
-  text-align: left;
-  color: white;
-  margin-bottom: 7px;
-  font-size: 18px;
-  font-weight: 500;
-  text-shadow: 2px 4px 30px black;
-}
-
-.buttonsContainer {
-  width: 25%;
-  z-index: 1;
-}
-.buttons {
+p.footer {
   align-self: center;
-}
-
-/*
-#GUI {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: 80%;
-  width: 80%;
-  padding: 0px;
-}
-
-#statLegend {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: 64%;
-  width: 100%;
-  padding: 0px;
-}
-
-#sliderContainer {
-  width: 20%;
-  text-align: left;
-}
-*/
-
-.stats {
-  color: white;
-  padding: 0px;
-  font-size: 18px;
-  line-height: 165%;
-}
-
-#statHead {
-  font-size: 19px;
-  font-weight: 600;
-  padding-bottom: 1%;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  height: 10vh;
-  color: white;
-  width: 100%;
-  font-size: 14px;
-}
-
-#footer {
-  text-align: center;
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-}
-
-.button {
-  background-color: white;
-  color: black;
-  border: 2px solid black;
-  min-width: 180px;
-  border-radius: 50px;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 15px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  transition: transform 0.1s ease-out;
-}
-
-.button:hover {
-  transform: scale(1.03);
-}
-
-.toggle {
-  background-color: rgba(255, 255, 255, 0.358);
-}
-
-.toggle.active {
-  background-color: white;
-}
-
-.legend {
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-}
-
-.legend-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 4px;
-  margin-top: 4px;
-}
-
-.legend-circle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  margin-right: 8px;
-  margin-left: 8px;
-  border: 2px solid #ffffff;
-}
-
-.legend-text {
-  color: white;
-  font-weight: 500;
+  color: #654321;
+  font-family: Public Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 115%; /* 0.8625rem */
 }

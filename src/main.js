@@ -317,11 +317,7 @@ for (var i = 0; i < buttons.length; i++) {
   });
 }
 
-//Sizes
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-}
+
 
 //HOVER?
 //Hover
@@ -376,13 +372,22 @@ scene.add(backLight)
 const ambLight = new THREE.AmbientLight(0xffffff, 0.5)
 scene.add(ambLight)
 
-//Camera
-const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(0, 5.880735, 11.026378)
-scene.add(camera)
+
 
 //Renderer
-const canvas = document.querySelector('.webgl')
+const canvas = document.querySelector('#contentWindow')
+
+//Sizes
+const sizes = {
+  width: canvas.clientWidth,
+  height: canvas.clientHeight,
+}
+
+//Camera
+const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
+camera.position.set(0, 5.880735/1.5, 11.026378/1.5)
+scene.add(camera)
+
 const renderer = new THREE.WebGLRenderer({canvas}, {alpha: true})
 renderer.setClearColor ( 0x000000, 0)
 renderer.setSize(sizes.width, sizes.height)
@@ -401,6 +406,7 @@ var ARbutton = document.getElementById("autoRotate");
 ARbutton.addEventListener("click", toggleAutoRotate)
 
 function toggleAutoRotate() {
+  ARbutton.classList.toggle('active')
   if (ARbutton.classList.contains("active")) {
     console.log("Auto rotate on");
     console.log(camera.position)
@@ -431,7 +437,7 @@ var resetPosButton = document.getElementById("resetPosition");
 resetPosButton.addEventListener("click", resetPosition);
 
 function resetPosition() {
-  camera.position.set(0, 5.880735, 11.026378)
+  camera.position.set(0, 5.880735/1.5, 11.026378/1.5)
 }
 
 
@@ -443,15 +449,15 @@ function birdsEyeView() {
   const currentY = camera.position.y
   const currentZ = camera.position.z
   const newX = currentX/100000
-  const newY = 25
+  const newY = 10
   const newZ = currentZ/100000
   camera.position.set(newX, newY, newZ)
 }
 
 //Resize
 window.addEventListener('resize', () => {
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+    sizes.width = canvas.clientWidth
+    sizes.height = canvas.clientHeight
     
     camera.aspect = sizes.width / sizes.height
     camera.updateProjectionMatrix()
@@ -460,15 +466,15 @@ window.addEventListener('resize', () => {
 
 // update stat lines
 var statHead = document.getElementById("statHead")
-var whiteStat = document.getElementById("blueWhite")
-var hispanicStat = document.getElementById("pinkHispanic")
-var blackStat = document.getElementById("brownBlack")
-var nativeStat = document.getElementById("goldNative")
-var asianStat = document.getElementById("redAsian")
+var whiteStat = document.getElementById("white-stat")
+var hispanicStat = document.getElementById("hispanic-stat")
+var blackStat = document.getElementById("black-stat")
+var nativeStat = document.getElementById("native-stat")
+var asianStat = document.getElementById("asian-stat")
 
 function updateStats() {
   const year = yearSlider.value
-  statHead.textContent = year + " Homeownership Rates:"
+  statHead.textContent = "Homeownership rates in " + year + ":"
   whiteStat.textContent = "White Americans: " + Math.round((data['White'][year] * 100)*10)/10 + "%"
   hispanicStat.textContent = "Hispanic Americans: " + Math.round((data['Hispanic'][year] * 100)*10)/10 + "%"
   blackStat.textContent = "Black Americans: " + Math.round((data['Black'][year] * 100)*10)/10 + "%"
